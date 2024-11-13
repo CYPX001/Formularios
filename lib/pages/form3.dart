@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-// Definición de la clase Form3, que es un StatefulWidget.
 class Form3 extends StatefulWidget {
   Form3({super.key, required this.title});
 
@@ -11,77 +10,74 @@ class Form3 extends StatefulWidget {
   State<Form3> createState() => _Form3State();
 }
 
-// Definición del estado de Form3.
 class _Form3State extends State<Form3> {
-  final _formKey = GlobalKey<FormBuilderState>();  // Clave para gestionar el estado del formulario
-  bool switchValue = false;  // Variable para gestionar el estado del switch
+  bool switchValue = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Barra de navegación superior
       appBar: appbar(),
-      body: SingleChildScrollView(  // Permite desplazarse por la página si el contenido excede el tamaño de la pantalla
+      body: SingleChildScrollView(
         child: Center(
           child: Container(
-            width: 500,  // Establece el ancho del contenedor
-            padding: const EdgeInsets.all(16.0),  // Añade un padding alrededor del contenedor
-            child: FormBuilder(  // Widget que gestiona el formulario
-              key: _formKey,  // Asocia la clave de formulario
-              child: Column(  // Columna que organiza los elementos de entrada
+            width: 500,
+            padding: const EdgeInsets.all(16.0),
+            child: FormBuilder(
+              child: Column(
                 children: [
-                  appChoiceChip(),  // Componente de selección de chips
-                  const SizedBox(height: 20),  // Espaciado entre los elementos
-                  appSwitch(),  // Interruptor (Switch)
+                  appChoiceChip(),
                   const SizedBox(height: 20),
-                  appInputText(),  // Campo de texto de entrada
+                  appSwitch(),
                   const SizedBox(height: 20),
-                  appdropdown(),  // Menú desplegable (Dropdown)
+                  appInputText(),
                   const SizedBox(height: 20),
-                  appRadioGroup(),  // Grupo de botones de radio
+                  appdropdown(),
+                  const SizedBox(height: 20),
+                  appRadioGroup(),
                 ],
               ),
             ),
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.upload_rounded),
+          backgroundColor: Colors.blueAccent,
+          onPressed: () {}),
     );
   }
 
-  // Función para construir la AppBar.
   AppBar appbar() {
     return AppBar(
-      centerTitle: true,  // Centra el título en la AppBar
-      title: const Text('Sarrià Salesians 24/25 - FORM 3'),  // Título de la aplicación
-      backgroundColor: Colors.blueAccent,  // Color de fondo de la AppBar
+      centerTitle: true,
+      title: const Text('Sarrià Salesians 24/25'),
+      backgroundColor: Colors.blueAccent,
     );
   }
 
-  // Función para construir los chips de selección.
   FormBuilderChoiceChip appChoiceChip() {
     return FormBuilderChoiceChip(
       padding: const EdgeInsets.all(3.0),
-      name: 'choice_chips',  // Nombre del campo en el formulario
+      name: 'choice_chips',
       decoration: InputDecoration(
-        labelText: 'Choice Chips',  // Etiqueta del campo
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),  // Borde redondeado
+        labelText: 'Choice Chips',
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
       ),
-      alignment: WrapAlignment.center,  // Alineación de los chips
-      spacing: 10.0,  // Espaciado entre los chips
-      runSpacing: 10.0,  // Espaciado entre las filas de chips
-      backgroundColor: const Color.fromARGB(255, 4, 68, 120),  // Color de fondo de los chips
-      selectedColor: Colors.green,  // Color cuando el chip está seleccionado
-      showCheckmark: false,  // No muestra un checkmark en el chip
+      alignment: WrapAlignment.center,
+      spacing: 10.0,
+      runSpacing: 10.0,
+      backgroundColor: const Color.fromARGB(255, 4, 68, 120),
+      selectedColor: Colors.green,
+      showCheckmark: false,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),  // Bordes redondeados
-        side: const BorderSide(color: Colors.transparent),  // Sin borde visible
+        borderRadius: BorderRadius.circular(20),
+        side: const BorderSide(color: Colors.transparent),
       ),
       options: const [
-        // Definición de las opciones disponibles para los chips
         FormBuilderChipOption(
           value: 'Flutter',
           avatar: Icon(
-            Icons.flutter_dash_rounded,  // Ícono de Flutter
+            Icons.flutter_dash_rounded,
             color: Color.fromRGBO(255, 255, 255, 0.95),
           ),
           child: Text(
@@ -91,81 +87,160 @@ class _Form3State extends State<Form3> {
             ),
           ),
         ),
-        // Otras opciones de chips...
+        FormBuilderChipOption(
+          value: 'Android',
+          avatar: Icon(
+            Icons.android_rounded,
+            color: Color.fromRGBO(255, 255, 255, 0.95),
+          ),
+          child: Text(
+            'Android',
+            style: TextStyle(
+              color: Color.fromRGBO(255, 255, 255, 0.95),
+            ),
+          ),
+        ),
+        FormBuilderChipOption(
+          value: 'ChromeOS',
+          avatar: Icon(
+            Icons.laptop_chromebook_rounded,
+            color: Color.fromRGBO(255, 255, 255, 0.95),
+          ),
+          child: Text(
+            'ChromeOS',
+            style: TextStyle(
+              color: Color.fromRGBO(255, 255, 255, 0.95),
+            ),
+          ),
+        ),
+        FormBuilderChipOption(
+          value: 'iOS',
+          avatar: Icon(
+            Icons.apple_rounded,
+            color: Color.fromRGBO(255, 255, 255, 0.95),
+          ),
+          child: Text(
+            'iOS',
+            style: TextStyle(
+              color: Color.fromRGBO(255, 255, 255, 0.95),
+            ),
+          ),
+        ),
+        FormBuilderChipOption(
+          value: 'Windows',
+          avatar: Icon(
+            Icons.window_rounded,
+            color: Color.fromRGBO(255, 255, 255, 0.95),
+          ),
+          child: Text(
+            'Windows',
+            style: TextStyle(
+              color: Color.fromRGBO(255, 255, 255, 0.95),
+            ),
+          ),
+        ),
+        FormBuilderChipOption(
+          value: 'Linux',
+          avatar: Icon(
+            Icons.line_axis_rounded,
+            color: Color.fromRGBO(255, 255, 255, 0.95),
+          ),
+          child: Text(
+            'Linux',
+            style: TextStyle(
+              color: Color.fromRGBO(255, 255, 255, 0.95),
+            ),
+          ),
+        ),
       ],
     );
   }
 
-  // Función para construir el switch (interruptor).
   FormBuilderSwitch appSwitch() {
     return FormBuilderSwitch(
-      title: const Text('Switch'),  // Título del interruptor
-      name: 'app_switch',  // Nombre del campo
+      title: const Text('Switch'),
+      name: 'app_switch',
       decoration: InputDecoration(
-        labelText: 'App Switch',  // Etiqueta del campo
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),  // Borde redondeado
+        labelText: 'App Switch',
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
       ),
       onChanged: (value) {
         setState(() {
-          switchValue = value ?? false;  // Actualiza el valor del switch
+          switchValue = value ?? false;
         });
       },
     );
   }
 
-  // Función para construir el campo de texto de entrada.
   FormBuilderTextField appInputText() {
     return FormBuilderTextField(
-      name: 'app_input_txt',  // Nombre del campo
-      maxLength: 15,  // Longitud máxima de caracteres
+      name: 'app_input_txt',
+      maxLength: 15,
       decoration: InputDecoration(
-        labelText: 'Input Text',  // Etiqueta del campo
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),  // Borde redondeado
+        labelText: 'Input Text',
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
         prefix: const Text(
-          'A   ',  // Prefijo de texto
+          'A   ',
           style: TextStyle(
-            decoration: TextDecoration.underline,  // Subraya el prefijo
+            decoration: TextDecoration.underline,
           ),
         ),
       ),
     );
   }
 
-  // Función para construir el menú desplegable (dropdown).
   FormBuilderDropdown appdropdown() {
     return FormBuilderDropdown(
       decoration: InputDecoration(
-        labelText: 'Dropdown',  // Etiqueta del campo
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),  // Borde redondeado
+        labelText: 'Dropdown',
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
       ),
-      name: 'app_dropdown',  // Nombre del campo
+      name: 'app_dropdown',
       items: const [
         DropdownMenuItem(
-          value: 'option1',  // Opción 1
+          value: 'option1',
           child: Text('OPTION 1'),
         ),
-        // Otras opciones del dropdown...
+        DropdownMenuItem(
+          value: 'option2',
+          child: Text('OPTION 2'),
+        ),
+        DropdownMenuItem(
+          value: 'option3',
+          child: Text('OPTION 3'),
+        ),
+        DropdownMenuItem(
+          value: 'option4',
+          child: Text('OPTION 4'),
+        ),
       ],
       onChanged: (value) {
-        // Handle dropdown value change (opcional)
+        // Handle dropdown value change
       },
     );
   }
 
-  // Función para construir el grupo de botones de radio.
   FormBuilderRadioGroup appRadioGroup() {
     return FormBuilderRadioGroup(
-        name: 'app_radio_group',  // Nombre del campo
-        orientation: OptionsOrientation.vertical,  // Orientación vertical de las opciones
+        name: 'app_radio_group',
+        orientation: OptionsOrientation.vertical,
         decoration: InputDecoration(
-          labelText: 'Radio Group',  // Etiqueta del campo
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),  // Borde redondeado
+          labelText: 'Radio Group',
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
         ),
         options: const [
           FormBuilderFieldOption(
-            value: 'OPTION 1',  // Opción 1
+            value: 'OPTION 1',
           ),
-          // Otras opciones del radio group...
+          FormBuilderFieldOption(
+            value: 'OPTION 2',
+          ),
+          FormBuilderFieldOption(
+            value: 'OPTION 3',
+          ),
+          FormBuilderFieldOption(
+            value: 'OPTION 4',
+          )
         ]);
   }
 }
